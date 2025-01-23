@@ -1,4 +1,5 @@
 # LLM_From_Scratch
+## 1. Understanding Large Language Models
 
 ## 2. Working with Text Data
 
