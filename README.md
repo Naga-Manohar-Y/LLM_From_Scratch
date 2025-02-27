@@ -28,13 +28,22 @@ This project is an implementation of a GPT model built entirely from scratch, in
   - Conversational AI (e.g., ChatGPT, Gemini, Claude)
 ### **Stages of Building and Using LLMs**
 LLM training generally involves two key stages:
+
 **Pretraining** – Training on a massive dataset to learn general language structures using next-word prediction.
+
 **Finetuning** – Adapting the pretrained model to specific tasks using labeled datasets (e.g., instruction tuning or classification).
+
 This two-step approach allows LLMs to be customized for specific applications while leveraging the knowledge learned from large-scale text corpora.
 
-- Introduction to transformers and self-attention.  
-- How GPT models work: tokenization, embeddings, and autoregressive generation.  
-- Overview of training objectives like masked language modeling and next-token prediction.  
+### **Transformer Architecture**
+Most modern LLMs rely on the **transformer architecture**, introduced in the 2017 paper *Attention Is All You Need*. The original transformer was developed for machine translation.
+
+**Architecture**
+![Architecture]()
+- Consists of two submodules: **Encoder** and **Decoder**
+- **Encoder** processes input text into numerical representations (embeddings)
+- **Decoder** generates the output text from these embeddings
+
 
 ## **2. Working with Text Data**  
 ### 2.1 Understanding word embeddings  
