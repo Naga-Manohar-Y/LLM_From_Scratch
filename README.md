@@ -48,9 +48,9 @@ Most modern LLMs rely on the **transformer architecture**, introduced in the 201
 ### **GPT Architecture**
 - GPT architecture is relatively simple. It's just the decoder part without the encoder. Since decoder-style models like GPT generate text by predicting text one word at a time, they are considered a type of **autoregressive model**. 
 - Autoregressive models incorporate their previous outputs as inputs for future predictions. Consequently, in GPT, each new word is chosen based on the sequence that precedes it, which improves coherence of the resulting text.
-- GPT models, though designed for next-word prediction, unexpectedly perform translation—a phenomenon called "emergent behavior." This arises from exposure to multilingual data, enabling diverse tasks without specialized training, showcasing the power of large-scale generative models.
-### **Building a large language model**
-<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fgithub.com%2Frasbt%2FLLMs-from-scratch&psig=AOvVaw2B4yVMdNC_3EYbg0h0ejfo&ust=1740774535198000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLji-9DY5IsDFQAAAAAdAAAAABAE" alt="Stages of building a LLM" width="400" height="300">
+- GPT models, though designed for next-word prediction, unexpectedly perform translation—a phenomenon called "**emergent behavior.**" This arises from exposure to multilingual data, enabling diverse tasks without specialized training, showcasing the power of large-scale generative models.
+### **Building a large language model in 3 stages**
+<img src="https://camo.githubusercontent.com/a17472f25db0af2e7a72700cf3e994b48a61405931b54111ed4d62cbe0371216/68747470733a2f2f73656261737469616e72617363686b612e636f6d2f696d616765732f4c4c4d732d66726f6d2d736372617463682d696d616765732f6d656e74616c2d6d6f64656c2e6a7067" alt="Stages of building a LLM" width="400" height="200">
 
 ## **2. Working with Text Data**  
 ### 2.1 Understanding word embeddings  
