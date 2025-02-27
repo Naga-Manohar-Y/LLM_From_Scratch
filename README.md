@@ -53,6 +53,97 @@ Most modern LLMs rely on the **transformer architecture**, introduced in the 201
 <img src="https://camo.githubusercontent.com/a17472f25db0af2e7a72700cf3e994b48a61405931b54111ed4d62cbe0371216/68747470733a2f2f73656261737469616e72617363686b612e636f6d2f696d616765732f4c4c4d732d66726f6d2d736372617463682d696d616765732f6d656e74616c2d6d6f64656c2e6a7067" alt="Stages of building a LLM" width="400" height="200">
 
 ## **2. Working with Text Data**  
+### **Word Embeddings**
+- Deep neural networks can't process raw text directly, as it must be converted into numerical form. Embeddings map words or other discrete data into continuous vector space, enabling neural networks to handle text, images, or audio efficiently.
+
+<img src="https://camo.githubusercontent.com/5aedb0a406bf9d298b251f57e1fbafb7bea9f993d16488675f2da6d419754505/68747470733a2f2f73656261737469616e72617363686b612e636f6d2f696d616765732f4c4c4d732d66726f6d2d736372617463682d696d616765732f636830325f636f6d707265737365642f30322e77656270" alt="Types of Embeddings" width="400" height="200">
+
+<img src="https://camo.githubusercontent.com/1af3219e9329179a800d59e13ac04e32113cd4cd645ed3e805a48a3d49bf8996/68747470733a2f2f73656261737469616e72617363686b612e636f6d2f696d616765732f4c4c4d732d66726f6d2d736372617463682d696d616765732f636830325f636f6d707265737365642f30332e77656270" alt="Text Embeddings" width="200" height="200">
+
+### **Preparing Embeddings for LLMs**
+
+When training a Large Language Model (LLM), we need to convert raw text into a numerical format that the model can process. This involves several key steps:
+
+**Tokenizing Text**   
+Before converting words into numerical representations, we split text into tokens. 
+
+<img src="https://camo.githubusercontent.com/241f7a302c33bc1e8156e7d0b153caae8728f2c9cd03884487c05d931fd88be2/68747470733a2f2f73656261737469616e72617363686b612e636f6d2f696d616765732f4c4c4d732d66726f6d2d736372617463682d696d616765732f636830325f636f6d707265737365642f30352e77656270" alt="Text Embeddings" width="300" height="100">
+
+A tokenizer breaks down input text into:  
+- Words ("Hello world" → ["Hello", "world"])
+- Subwords ("unfamiliar" → ["unfam", "iliar"])
+- Characters (if needed)
+- Special tokens ([BOS], [EOS], [PAD], [UNK]):
+  - [BOS] (Beginning of sequence)
+  - [EOS] (End of sequence)
+  - [PAD] (Padding to equalize sequence lengths)
+  - [UNK] (Unknown words that don’t exist in the vocabulary)
+
+Each token is then mapped to a unique integer (token ID) using a vocabulary.   
+
+<img src="https://camo.githubusercontent.com/11a0a59ffbb8eb8e6a90eb4ea7706e4be0d7ed9b53cadd0d31f676af267866c0/68747470733a2f2f73656261737469616e72617363686b612e636f6d2f696d616765732f4c4c4d732d66726f6d2d736372617463682d696d616765732f636830325f636f6d707265737365642f30392e776562703f313233" alt="Text Embeddings" width="300" height="200">
+
+**Byte Pair Encoding (BPE)** - GPT’s Tokenization Method
+Why BPE? LLMs need to handle words outside their vocabulary (out-of-vocabulary words). Instead of storing every possible word, Byte Pair Encoding (BPE) breaks words into subwords.
+
+<img src="https://camo.githubusercontent.com/5938dff392e5cb7404d2636e4d7157fceb4c36ecf57a2173001bd3edf22234da/68747470733a2f2f73656261737469616e72617363686b612e636f6d2f696d616765732f4c4c4d732d66726f6d2d736372617463682d696d616765732f636830325f636f6d707265737365642f31312e77656270" alt="Text Embeddings" width="300" height="200">
+
+- This allows the model to generalize words it hasn't explicitly seen during training.
+- GPT-2 uses OpenAI’s tiktoken library, which implements BPE in Rust for better efficiency.
+
+**Preparing Input-Target Pairs for Training**.  
+To train an LLM, we need to structure the data properly:
+
+- Chunking text into smaller sequences.
+- Next-word prediction: 
+The model predicts the next word given the previous words.
+Example:
+
+- `Input:  ["The", "cat", "sat", "on"]`        
+`Target: ["cat", "sat", "on", "the"]`
+
+- The target is just a right-shifted version of the input.
+Using DataLoaders in PyTorch:
+- The Dataset and DataLoader classes load the data efficiently in mini-batches.
+
+**Creating Token Embeddings (Converting Tokens into Vectors):**
+
+- Since token IDs are just numbers, we need to convert them into meaningful numerical representations:
+
+- Embedding layer: Maps token IDs to high-dimensional embedding vectors.
+Example: If a token ID is 3, it retrieves the corresponding row from the embedding matrix.
+
+<img src="https://camo.githubusercontent.com/30c75dce5178bdb6f53a37899c08b44c92eff2306c38beef19a831dc3770fc00/68747470733a2f2f73656261737469616e72617363686b612e636f6d2f696d616765732f4c4c4d732d66726f6d2d736372617463682d696d616765732f636830325f636f6d707265737365642f31362e776562703f313233" alt="Text Embeddings" width="300" height="200">
+
+- Why embeddings? They allow words with similar meanings to have similar numerical representations.
+
+**Encoding Word Positions (Positional Embeddings)**
+
+- Embedding layer convert IDs into identical vector representations regardless of where they are located in the input sequence:
+<img src="https://camo.githubusercontent.com/2659e7bc3eed30da2e6a0e6adc3143d6240c2759e5315481b21877eb12de47e1/68747470733a2f2f73656261737469616e72617363686b612e636f6d2f696d616765732f4c4c4d732d66726f6d2d736372617463682d696d616765732f636830325f636f6d707265737365642f31372e77656270" alt="Text Embeddings" width="300" height="200">
+- LLMs process words without knowing their order, which can cause problems. To fix this, we add positional embeddings, which provide a sense of word order.
+
+- There are two types of positional embeddings:
+  - Absolute Positional Embeddings (used in GPT models)
+    Assigns a fixed embedding to each position in a sequence.
+    "Hello" (Position 1) → Embedding A
+    "world" (Position 2) → Embedding B
+- These embeddings are optimized during training.
+- Relative Positional Embeddings
+  - Instead of storing absolute positions, it encodes distances between words.  
+Example:  
+"cat" and "sat" may have a distance of 1.  
+"cat" and "mat" may have a distance of 3
+
+**Final Processing Before Training**
+- Token IDs → Embeddings
+- Convert token IDs into 256-dimensional embedding vectors (GPT-3 uses 12,288 dimensions).
+- To create the input embeddings used in an LLM, we simply add the token and the positional embeddings:
+
+<img src="https://camo.githubusercontent.com/730badacd85e476130cab5a98990d3c616b4333921096c576c31a50e7c0ca627/68747470733a2f2f73656261737469616e72617363686b612e636f6d2f696d616765732f4c4c4d732d66726f6d2d736372617463682d696d616765732f636830325f636f6d707265737365642f31392e77656270" alt="Text Embeddings" width="200" height="300">
+
+
+
 ### 2.1 Understanding word embeddings  
 ### 2.2 Tokenizing text  
 ### 2.3 Converting tokens into token IDs  
