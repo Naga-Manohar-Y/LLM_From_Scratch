@@ -6,8 +6,8 @@ This project is an implementation of a GPT model built entirely from scratch, in
 
 | Topic | Description | README Section | Code File |
 |--------|-------------|--------------|-----------|
-| **Understanding Large Language Models** | Introduction to transformers, tokenization, and training objectives. | [Read More](#1-understanding-large-language-models) | [📜 Code](path/to/model_architecture.py) |
-| **Working with Text Data** | Covers tokenization, word embeddings, special tokens, and data sampling. | [Read More](#2-working-with-text-data) | [📜 Code](path/to/text_preprocessing.py) |
+| **Understanding Large Language Models** | Introduction to LLMs, transformer, and training objectives. | [Read More](#1-understanding-large-language-models) | [📜 No Code - add papers](path/to/model_architecture.py) |
+| **Working with Text Data** | Covers tokenization, Byte-pair encoding, word embeddings, and positional embeddings. | [Read More](#2-working-with-text-data) | [📜 Code](https://github.com/Naga-Manohar-Y/LLM_From_Scratch/blob/main/LLM_Data_Preprocessing.ipynb) |
 | **Coding Attention Mechanisms** | Explains self-attention, causal masking, and multi-head attention. | [Read More](#3-coding-attention-mechanisms) | [📜 Code](path/to/attention.py) |
 | **Implementing a GPT Model from Scratch** | Step-by-step implementation of a GPT model, including transformer blocks and text generation. | [Read More](#4-implementing-a-gpt-model-from-scratch-to-generate-text) | [📜 Code](path/to/gpt_model.py) |
 | **Pretraining on Unlabeled Data** | Covers loss functions, decoding strategies, and loading pre-trained weights. | [Read More](#5-pretraining-on-unlabeled-data) | [📜 Code](path/to/pretraining.py) |
