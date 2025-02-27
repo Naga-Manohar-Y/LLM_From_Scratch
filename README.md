@@ -122,6 +122,7 @@ Example: If a token ID is 3, it retrieves the corresponding row from the embeddi
 
 - Embedding layer convert IDs into identical vector representations regardless of where they are located in the input sequence:
 <img src="https://camo.githubusercontent.com/2659e7bc3eed30da2e6a0e6adc3143d6240c2759e5315481b21877eb12de47e1/68747470733a2f2f73656261737469616e72617363686b612e636f6d2f696d616765732f4c4c4d732d66726f6d2d736372617463682d696d616765732f636830325f636f6d707265737365642f31372e77656270" alt="Text Embeddings" width="300" height="200">
+
 - LLMs process words without knowing their order, which can cause problems. To fix this, we add positional embeddings, which provide a sense of word order.
 
 - There are two types of positional embeddings:
@@ -134,7 +135,7 @@ Example: If a token ID is 3, it retrieves the corresponding row from the embeddi
 "cat" and "mat" may have a distance of 3
 
 **Final Processing Before Training**
-- To create the input embeddings used in an LLM, we simply add the token and the positional embeddings:
+- To create the input embeddings used in an LLM, we simply add the token and the absolute positional embeddings:
 
 <img src="https://camo.githubusercontent.com/730badacd85e476130cab5a98990d3c616b4333921096c576c31a50e7c0ca627/68747470733a2f2f73656261737469616e72617363686b612e636f6d2f696d616765732f4c4c4d732d66726f6d2d736372617463682d696d616765732f636830325f636f6d707265737365642f31392e77656270" alt="Text Embeddings" width="200" height="300">
 
