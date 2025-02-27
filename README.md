@@ -29,9 +29,8 @@ This project is an implementation of a GPT model built entirely from scratch, in
 ### **Stages of Building and Using LLMs**
 LLM training generally involves two key stages:
 
-**Pretraining** – Training on a massive dataset to learn general language structures using next-word prediction.
-
-**Finetuning** – Adapting the pretrained model to specific tasks using labeled datasets (e.g., instruction tuning or classification).
+- **Pretraining** – Training on a massive dataset to learn general language structures using next-word prediction.
+- **Finetuning** – Adapting the pretrained model to specific tasks using labeled datasets (e.g., instruction tuning or classification).
 
 This two-step approach allows LLMs to be customized for specific applications while leveraging the knowledge learned from large-scale text corpora.
 
@@ -39,7 +38,7 @@ This two-step approach allows LLMs to be customized for specific applications wh
 Most modern LLMs rely on the **transformer architecture**, introduced in the 2017 paper *Attention Is All You Need*. The original transformer was developed for machine translation.
 
 **Architecture**
-![Architecture]()
+![Architecture](https://github.com/Naga-Manohar-Y/LLM_From_Scratch/blob/main/images/Transformer%20architecture.png)
 - Consists of two submodules: **Encoder** and **Decoder**
 - **Encoder** processes input text into numerical representations (embeddings)
 - **Decoder** generates the output text from these embeddings
