@@ -17,7 +17,7 @@ This project is an implementation of a GPT model built entirely from scratch, in
 ---
 
 ## **1. Understanding Large Language Models**  
-**What is an LLM?**
+### **What is an LLM?**
 - A Large Language Model (LLM) is a deep neural network trained on vast amounts of text data to understand and generate human-like text. LLMs use the transformer architecture, which enables them to focus on different parts of the input using an attention mechanism. These models, trained via next-word prediction, power applications like chatbots, text summarization, and code generation.
 - LLMs are widely used for:
   - Text generation
@@ -26,7 +26,11 @@ This project is an implementation of a GPT model built entirely from scratch, in
   - Summarization
   - Question answering
   - Conversational AI (e.g., ChatGPT, Gemini, Claude)
-
+### **Stages of Building and Using LLMs**
+LLM training generally involves two key stages:
+**Pretraining** – Training on a massive dataset to learn general language structures using next-word prediction.
+**Finetuning** – Adapting the pretrained model to specific tasks using labeled datasets (e.g., instruction tuning or classification).
+This two-step approach allows LLMs to be customized for specific applications while leveraging the knowledge learned from large-scale text corpora.
 
 - Introduction to transformers and self-attention.  
 - How GPT models work: tokenization, embeddings, and autoregressive generation.  
