@@ -109,6 +109,7 @@ Using DataLoaders in PyTorch:
 **Creating Token Embeddings (Converting Tokens into Vectors):**
 
 - Since token IDs are just numbers, we need to convert them into meaningful numerical representations:
+- Convert token IDs into 256-dimensional embedding vectors (GPT-3 uses 12,288 dimensions).
 
 - Embedding layer: Maps token IDs to high-dimensional embedding vectors.
 Example: If a token ID is 3, it retrieves the corresponding row from the embedding matrix.
@@ -124,34 +125,19 @@ Example: If a token ID is 3, it retrieves the corresponding row from the embeddi
 - LLMs process words without knowing their order, which can cause problems. To fix this, we add positional embeddings, which provide a sense of word order.
 
 - There are two types of positional embeddings:
-  - Absolute Positional Embeddings (used in GPT models)
+  - **Absolute Positional Embeddings** (used in GPT models):
     Assigns a fixed embedding to each position in a sequence.
-    "Hello" (Position 1) → Embedding A
-    "world" (Position 2) → Embedding B
+
 - These embeddings are optimized during training.
-- Relative Positional Embeddings
-  - Instead of storing absolute positions, it encodes distances between words.  
-Example:  
+  - **Relative Positional Embeddings**: Instead of storing absolute positions, it encodes distances between words.  
 "cat" and "sat" may have a distance of 1.  
 "cat" and "mat" may have a distance of 3
 
 **Final Processing Before Training**
-- Token IDs → Embeddings
-- Convert token IDs into 256-dimensional embedding vectors (GPT-3 uses 12,288 dimensions).
 - To create the input embeddings used in an LLM, we simply add the token and the positional embeddings:
 
 <img src="https://camo.githubusercontent.com/730badacd85e476130cab5a98990d3c616b4333921096c576c31a50e7c0ca627/68747470733a2f2f73656261737469616e72617363686b612e636f6d2f696d616765732f4c4c4d732d66726f6d2d736372617463682d696d616765732f636830325f636f6d707265737365642f31392e77656270" alt="Text Embeddings" width="200" height="300">
 
-
-
-### 2.1 Understanding word embeddings  
-### 2.2 Tokenizing text  
-### 2.3 Converting tokens into token IDs  
-### 2.4 Adding special context tokens  
-### 2.5 BytePair encoding  
-### 2.6 Data sampling with a sliding window  
-### 2.7 Creating token embeddings  
-### 2.8 Encoding word positions  
 
 ## **3. Coding Attention Mechanisms**  
 ### 3.1 The problem with modeling long sequences  
