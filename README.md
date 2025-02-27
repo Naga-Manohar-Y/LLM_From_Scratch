@@ -38,7 +38,9 @@ This two-step approach allows LLMs to be customized for specific applications wh
 Most modern LLMs rely on the **transformer architecture**, introduced in the 2017 paper *Attention Is All You Need*. The original transformer was developed for machine translation.
 
 **Architecture**
-![Architecture](https://github.com/Naga-Manohar-Y/LLM_From_Scratch/blob/main/images/Transformer%20architecture.png)
+
+<img src="https://github.com/Naga-Manohar-Y/LLM_From_Scratch/blob/main/images/Transformer%20architecture.png" alt="Architecture" width="400" height="300">
+
 - Consists of two submodules: **Encoder** and **Decoder**
 - **Encoder** processes input text into numerical representations (embeddings)
 - **Decoder** generates the output text from these embeddings
